@@ -49,3 +49,4 @@ project/plugins/project/
 # spark-shell
 derby.log
 metastore_db/
+data/

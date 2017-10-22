@@ -6,8 +6,8 @@ import org.apache.spark._
 
 object SparkWordCount {
   def main(args: Array[String]) {
-    val sourceFilename = if(args.length == 2) args(0) else "input.txt"
-    val outputDirectory = if(args.length == 2) args(1) else "output"
+    val sourceFilename = if(args.length == 2) args(0) else "data/input.txt"
+    val outputDirectory = if(args.length == 2) args(1) else "tmp/output"
 
     val conf = new SparkConf().setAppName("WordCountApp").setMaster("local")
 
