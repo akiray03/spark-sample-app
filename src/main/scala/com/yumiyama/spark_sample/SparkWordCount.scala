@@ -6,6 +6,8 @@ import org.apache.spark._
 
 object SparkWordCount {
   def main(args: Array[String]) {
+    val sourceFilename = if(args.length == 2) args(0) else "input.txt"
+    val outputDirectory = if(args.length == 2) args(1) else "output"
 
     val conf = new SparkConf().setAppName("WordCountApp").setMaster("local")
 
@@ -15,7 +17,7 @@ object SparkWordCount {
     /* /usr/local/spark = Spark Home; Nil = jars; Map = environment */
     /* Map = variables to work nodes */
     /*creating an inputRDD to read text file (in.txt) through Spark context*/
-    val input = sc.textFile("input.txt")
+    val input = sc.textFile(sourceFilename)
     /* Transform the inputRDD into countRDD */
 
     val selectionPartOfSpeeches = Array("名詞", "動詞", "形容詞", "形容動詞", "副詞")
@@ -31,7 +33,7 @@ object SparkWordCount {
       .reduceByKey(_ + _)
 
     /* saveAsTextFile method is an action that effects on the RDD */
-    count.saveAsTextFile("outfile")
+    count.saveAsTextFile(outputDirectory)
     System.out.println("OK")
   }
 }
