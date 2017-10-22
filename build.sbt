@@ -18,4 +18,4 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-hive" % sparkVersion
 )
 
-mainClass in Compile := Some("com.yumiyama.spark_sample.SparkWordCount")
+mainClass in Compile := Some("com.yumiyama.spark_sample.Main")
